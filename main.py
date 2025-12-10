@@ -113,7 +113,7 @@ def parse_file(filepath: str) -> None:
             if name == type_name:
                 TYPES.add(type_name)
             else:
-                FIELDS.add(name.strip("_"))
+                FIELDS.update([w.strip("_") for w in name.split("/") if len(w) > 2])
             enum = m.get("enum")
             if enum is not None:
                 TYPES.update(enum.split("."))
