@@ -177,15 +177,24 @@ def main():
     print(f"[-] Found {len(KEYWORDS)} keywords")
     print(f"[-] Found {len(TYPES)} types")
     print(f"[-] Found {len(METHODS)} methods")
+    print(f"[-] Found {len(FIELDS)} fields")
+    print(f"[-] Found {len(SIGNALS)} signals")
     print(f"[-] Found {len(ANNOTATIONS)} annotations")
     print(f"[-] Found {len(CONSTANTS)} constants")
 
     words = set()
-    words.update(KEYWORDS, TYPES, METHODS, ANNOTATIONS, CONSTANTS)
-    words = sorted(words)
+    words.update(
+        KEYWORDS,
+        TYPES,
+        METHODS,
+        FIELDS,
+        SIGNALS,
+        ANNOTATIONS,
+        CONSTANTS,
+    )
 
     with open("gdscript.txt", "w") as fd:
-        fd.writelines([f"{word}\n" for word in words])
+        fd.writelines([f"{word}\n" for word in sorted(words)])
 
 
 if __name__ == "__main__":
