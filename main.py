@@ -194,6 +194,7 @@ def main():
     )
 
     with open("gdscript.txt", "w") as fd:
+        fd.write("# Automatically generated word list. Do NOT modify manually.\n")
         fd.writelines([f"{word}\n" for word in sorted(words)])
 
 
