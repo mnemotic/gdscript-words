@@ -119,6 +119,12 @@ def parse_file(filepath: str) -> None:
             enum = m.get("enum")
             if enum is not None:
                 TYPES.update(enum.split("."))
+            getter = m.get("getter")
+            if getter is not None and len(getter) > 0:
+                METHODS.add(getter)
+            setter = m.get("setter")
+            if setter is not None and len(setter) > 0:
+                METHODS.add(setter)
 
     signals = root.find("signals")
     if signals is not None:
